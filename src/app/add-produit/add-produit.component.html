@@ -1,0 +1,39 @@
+<div class="container">
+    <div>
+        <h2>Ajouter un Produit :</h2>
+    </div>
+    <form>
+        <div hidden class="col-sm-2 col-md-2 col-lg-2">
+            <label for="idProduit">ID Produit</label>
+            <input type="number" [(ngModel)]="newProduit.idProduit" name="idProduit" id="idProduit" class="form-control">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label for="nomProduit">Nom Produit</label>
+            <input type="text" [(ngModel)]="newProduit.nomProduit" name="nomProduit" id="nomProduit" class="form-control">
+        </div>
+
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label for="prixProduit">Prix Produit</label>
+            <input type="number" [(ngModel)]="newProduit.prixProduit" name="prixProduit" id="prixProduit" class="form-control">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label for="dateCreation">Date création</label>
+            <input type="date" [(ngModel)]="newProduit.dateCreation" name="dateCreation" id="dateCreation" class="form-control">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label for="idCat">Categorie</label>
+            <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="newIdCat">
+                <option *ngFor="let cat of categories" [value]="cat.idCat">
+                    {{cat.nomCat}}
+                </option>
+            </select>
+        </div>
+
+        <div class="mt-3">
+            <button type="submit" (click)="addProduit()" class="btn btn-success">Ajouter</button>
+        </div>
+    </form>
+</div>

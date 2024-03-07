@@ -1,0 +1,39 @@
+<div class="container">
+    <div>
+        <h2>Modifier un Produit :</h2>
+    </div>
+    <form>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label for="idProduit">ID Produit</label>
+            <input readonly type="number" name="idProduit" id="idProduit" [(ngModel)]="currentProduit.idProduit" class="form-control">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label for="nomProduit">Nom Produit</label>
+            <input type="text" name="nomProduit" id="nomProduit" [(ngModel)]="currentProduit.nomProduit" class="form-control">
+        </div>
+
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label for="prixProduit">Prix Produit</label>
+            <input type="number" name="prixProduit" id="prixProduit" [(ngModel)]="currentProduit.prixProduit" class="form-control">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label for="dateCreation">Date création</label>
+            <input type="date" name="dateCreation" id="dateCreation" [ngModel]="currentProduit.dateCreation | date : 'yyyy-MM-dd'" (ngModelChange)="currentProduit.dateCreation = $event" class="form-control">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label for="idCat">Categorie</label>
+            <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="updateCatId">
+                <option *ngFor="let cat of categories" [value]="cat.idCat">
+                    {{cat.nomCat}}
+                </option>
+            </select>
+        </div>
+
+        <div class="mt-3">
+            <button type="submit" (click)="updateProduit()" class="btn btn-outline-success">Modifier</button>
+        </div>
+    </form>
+</div>

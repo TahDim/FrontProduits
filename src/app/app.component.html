@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand">Gestion Produits</a>
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li *ngIf="authService.isLoggedIn" class="nav-item">
+      <a class="nav-link" routerLink="/produits" >Home</a>
+    </li>
+    <!-- Dropdown -->
+    <li *ngIf="authService.isLoggedIn" class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Produits
+      </a>
+      <div class="dropdown-menu">
+        <a *ngIf="authService.isAdmin()" class="dropdown-item" routerLink="/add-produit">Ajouter</a>
+        <a class="dropdown-item" routerLink="/rechercheParCategorie">Recherche par catégorie</a>
+        <a class="dropdown-item" routerLink="/rechercheParNom">Recherche par nom</a>
+        <a class="dropdown-item" routerLink="/listeCategories">Gestion des catégories</a>
+      </div>
+    </li>
+  </ul>
+  <ul class="navbar-nav ml-auto" >
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        {{authService.loggedUser ? authService.loggedUser : 'Connexion'}}
+      </a>
+      <div class="dropdown-menu">
+        <a *ngIf="!authService.isLoggedIn" class="dropdown-item" routerLink="/login">login</a>
+        <a *ngIf="authService.isLoggedIn" class="dropdown-item" (click) = "onLogout()">logout</a>
+        <a *ngIf="authService.isLoggedIn" class="dropdown-item" href="#">Profile</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>

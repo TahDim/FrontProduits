@@ -1,0 +1,25 @@
+<div class="container">
+    <div *ngIf="authService.isAdmin()" class="col-sm-6 col-md-6 col-lg-6 mt-4 mb-4">
+        <app-update-categorie [categorie]="updatedCat" [ajout]="ajout" (categorieUpdated)="categorieUpdated($event)" (ajoutRep)="ajoutRep($event)"></app-update-categorie>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom Catégorie</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let cat of categories">
+                    <tr>
+                        <td>{{cat.idCat}}</td>
+                        <td>{{cat.nomCat}}</td>
+                        <td *ngIf="authService.isAdmin()"><a class="btn btn-primary" (click)="updateCat(cat)">Editer</a></td>
+                        <td *ngIf="authService.isAdmin()"><a class="btn btn-danger" (click)="supprimerCat(cat.idCat)">Supprimer</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
